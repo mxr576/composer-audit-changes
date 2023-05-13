@@ -1,0 +1,50 @@
+{
+    "name": "mxr576/composer-audit-changes",
+    "description": "Composer command for only auditing installed or updated packages in composer.lock",
+    "license": "MIT",
+    "type": "composer-plugin",
+    "keywords": [
+        "Composer",
+        "QA",
+        "dev",
+        "audit",
+        "dependency analyses"
+    ],
+    "authors": [
+        {
+            "name": "Dezső BICZÓ",
+            "email": "mxr576@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "~8.1.0 || ~8.2.0",
+        "composer-plugin-api": "^2.3"
+    },
+    "require-dev": {
+        "composer/composer": "^2.4",
+        "ergebnis/composer-normalize": "^2.30",
+        "ergebnis/license": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.16",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan-deprecation-rules": "^1.0"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "mxr576\\ComposerAuditChanges\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "class": "\\mxr576\\ComposerAuditChanges\\Composer\\Plugin",
+        "composer-normalize": {
+            "indent-size": 4,
+            "indent-style": "space"
+        }
+    }
+}

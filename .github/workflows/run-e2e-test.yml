@@ -1,0 +1,59 @@
+name: Run e2e test
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - "*.*.x"
+      - "master"
+
+jobs:
+
+  run:
+    name: "Run e2e test"
+
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      matrix:
+        dependencies:
+          - "highest"
+          - "lowest"
+          - "locked"
+        php-version:
+          - "8.1"
+        operating-system:
+          - "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v3"
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@2.25.1"
+        with:
+          coverage: "none"
+          php-version: "${{ matrix.php-version }}"
+          ini-values: memory_limit=-1
+
+      - name: "Install dependencies"
+        uses: "ramsey/composer-install@2.2.0"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
+
+      - name: "Install e2e dependencies"
+        uses: "ramsey/composer-install@2.2.0"
+        with:
+          working-directory: "tests/fixtures/e2e"
+
+      - name: "Ensure that no advisories are reported by default"
+        run : ./vendor/bin/composer -d tests/fixtures/e2e audit-changes HEAD:tests/fixtures/e2e/composer.lock
+
+      - name: "Make intentional changes on composer.lock"
+        run: |
+          composer -d tests/fixtures/e2e req drupal/core:9.4.1 drupal/core-recommended:9.4.1 -W #PKSA-4j5n-cxxv-ptjc,PKSA-h7d4-5mdz-2965,PKSA-7q72-qds7-4xyv
+          composer -d tests/fixtures/e2e req swiftmailer/swiftmailer:5.0.0 # CVE-2016-10074
+
+      - name: Test composer audit output
+        run: tests/fixtures/e2e/test.php "$(./vendor/bin/composer -d tests/fixtures/e2e audit-changes HEAD:tests/fixtures/e2e/composer.lock --format=json)"
