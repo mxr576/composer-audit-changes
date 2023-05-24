@@ -1,6 +1,7 @@
 includes:
     - phpstan-baseline.neon
     - %rootDir%/../../composer/composer/phpstan/rules.neon
+    - %rootDir%/../../phpstan/phpstan-deprecation-rules/rules.neon
 
 parameters:
   level: max
