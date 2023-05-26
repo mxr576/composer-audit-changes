@@ -45,6 +45,7 @@
         "composer-normalize": {
             "indent-size": 4,
             "indent-style": "space"
-        }
+        },
+        "plugin-optional": true
     }
 }
