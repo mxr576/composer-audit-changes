@@ -27,6 +27,7 @@ use Composer\Repository\LockArrayRepository;
 use Composer\Repository\RepositorySet;
 use Composer\Semver\Constraint\MatchAllConstraint;
 use Composer\Util\ProcessExecutor;
+use Seld\JsonLint\ParsingException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -216,11 +217,25 @@ EOT
         $exit_code = $process_executor->execute(sprintf('git show %s 2>&1', ProcessExecutor::escape($ref)), $output);
 
         if (0 !== $exit_code) {
-            throw new \RuntimeException(sprintf('Could not open file %s or find it in git as %s: %s', $original, $ref, $output));
+            throw new \RuntimeException(sprintf('Could not open file %s or find it in git as %s: %s.', $original, $ref, $output));
         }
 
         if (null === $output) {
-            throw new \RuntimeException('Output is null, that should not happen');
+            throw new \RuntimeException('Output is null, that should not happen.');
+        }
+
+        // Even if "git show" exited with a non-zero exit code, the produced
+        // can be still invalid. For example, when the HEAD@{YYYY-MM-DD} reference
+        // is used and the date is older than the available history it yields
+        // a warning like "warning: log for 'HEAD' only goes back to ... " on
+        // STDERR - that we also capture to be able to expose command output to
+        // callers on failure.
+        try {
+            // For consistency reasons, use the same JSON parser as Composer uses
+            // everywhere.
+            JsonFile::parseJson($output);
+        } catch (ParsingException) {
+            throw new \RuntimeException(sprintf('Malformed JSON returned by "git show". %s.', \PHP_EOL . $output));
         }
 
         return $output;
