@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1195c6ae379da5b2c11a387f261e9c0",
+    "content-hash": "9a10965d4453f1dd83e41fb9a6683fa0",
     "packages": [
         {
             "name": "apigee/apigee-client-php",
@@ -7456,7 +7456,7 @@
             "dist": {
                 "type": "path",
                 "url": "../../..",
-                "reference": "6a4b82aaffa9485a0658a89b23b6eec68aecba97"
+                "reference": "f91cccc8e7a5e0d008fe58d67d62d6d24228e6fd"
             },
             "require": {
                 "composer-plugin-api": "^2.3",
@@ -7472,11 +7472,15 @@
             },
             "type": "composer-plugin",
             "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
                 "class": "\\mxr576\\ComposerAuditChanges\\Composer\\Plugin",
                 "composer-normalize": {
                     "indent-size": 4,
                     "indent-style": "space"
-                }
+                },
+                "plugin-optional": true
             },
             "autoload": {
                 "psr-4": {

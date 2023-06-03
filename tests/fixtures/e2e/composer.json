@@ -20,7 +20,7 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.30",
-        "mxr576/composer-audit-changes": "dev-master"
+        "mxr576/composer-audit-changes": "^1.99@dev"
     },
     "conflict": {
         "drupal/drupal": "*"
