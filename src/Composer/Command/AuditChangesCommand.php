@@ -60,8 +60,6 @@ EOT
     }
 
     /**
-     * {@inheritdoc}
-     *
      * @throws \RuntimeException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -81,7 +79,18 @@ EOT
             $repoSet->addRepository($repo);
         }
 
-        return min(255, $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false));
+        if (version_compare($composer::getVersion(), '2.6.0', '>=')) {
+            $auditConfig = $composer->getConfig()->get('audit');
+            if (!is_array($auditConfig)) {
+                $auditConfig = [];
+            }
+            // @phpstan-ignore-next-line
+            $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false, $auditConfig['ignore'] ?? []);
+        } else {
+            $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false);
+        }
+
+        return min(255, $audit);
     }
 
     /**
