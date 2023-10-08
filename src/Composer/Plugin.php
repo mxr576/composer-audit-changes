@@ -28,8 +28,10 @@ final class Plugin implements \Composer\Plugin\PluginInterface, \Composer\Plugin
         // This is a runtime check instead of a dependency constraint to allow
         // installation of this package on projects where composer/composer also
         // installed as a project dependency (but a global version used instead).
-        if (version_compare($composer::VERSION, '2.4.0', '<')) {
-            $io->warning(sprintf('%s is disabled because audit command is only available since Composer 2.4.0. Your version is: %s.', self::PACKAGE_NAME, $composer::VERSION));
+        if (version_compare($composer::getVersion(), '2.4.0', '<')) {
+            // By pushing this to STDERR we guarantee that the output on
+            // STDOUT (e.g, in JSON) do not get malformed when it is captured.
+            $io->writeError(sprintf('%s is disabled because audit command is only available since Composer 2.4.0. Your version is: %s.', self::PACKAGE_NAME, $composer::getVersion()));
 
             $this->disabled = true;
         }
