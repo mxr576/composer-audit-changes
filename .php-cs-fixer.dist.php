@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2023 Dezső Biczó
+ * Copyright (c) 2023-2024 Dezső Biczó
  *
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
@@ -18,7 +18,7 @@ $license = License\Type\MIT::markdown(
     __DIR__ . '/LICENSE.md',
     License\Range::since(
         License\Year::fromString('2023'),
-        new \DateTimeZone('UTC')
+        new DateTimeZone('UTC')
     ),
     License\Holder::fromString('Dezső Biczó'),
     License\Url::fromString('https://github.com/mxr576/composer-audit-changes/LICENSE.md')

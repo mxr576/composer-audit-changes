@@ -1,8 +1,10 @@
 #!/usr/bin/env php
 <?php
 
+declare(strict_types=1);
+
 /**
- * Copyright (c) 2023 Dezső Biczó
+ * Copyright (c) 2023-2024 Dezső Biczó
  *
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
@@ -13,7 +15,7 @@
 
 $audit_output = $argv[1] ?? (stream_get_contents(STDIN) ?: null);
 if (null === $audit_output) {
-    throw new \LogicException('Missing "composer audit" command output.');
+    throw new LogicException('Missing "composer audit" command output.');
 }
 
 fwrite(STDERR, $audit_output);
@@ -21,7 +23,7 @@ fwrite(STDERR, $audit_output);
 try {
     $audit_result = json_decode($audit_output, true, flags: JSON_THROW_ON_ERROR);
 } catch (JsonException $e) {
-    throw new \LogicException(sprintf('Malformed JSON input: "%s". %s', base64_encode(gzdeflate($audit_output, 9)), $e->getMessage()), 0, $e);
+    throw new LogicException(sprintf('Malformed JSON input: "%s". %s', base64_encode(gzdeflate($audit_output, 9)), $e->getMessage()), 0, $e);
 }
 
 assert(array_key_exists('drupal/core', $audit_result['advisories']), 'drupal/core was updated so it is flagged');
