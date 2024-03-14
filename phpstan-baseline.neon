@@ -17,7 +17,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'aliases' on mixed\\.$#"
-			count: 2
+			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
@@ -37,7 +37,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset 'packages\\-dev' on mixed\\.$#"
-			count: 2
+			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-

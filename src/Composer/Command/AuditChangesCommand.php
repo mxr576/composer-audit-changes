@@ -79,21 +79,17 @@ EOT
             $repoSet->addRepository($repo);
         }
 
-        if (version_compare($composer::getVersion(), '2.6.0', '>=')) {
-            $auditConfig = $composer->getConfig()->get('audit');
-            if (!is_array($auditConfig)) {
-                $auditConfig = [];
-            }
-            if (version_compare($composer::getVersion(), '2.6.3', '>=')) {
-                // @todo Adjust default audit value when Composer 2.7.0 is available.
-                // @phpstan-ignore-next-line
-                $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false, $auditConfig['ignore'] ?? [], $auditConfig['abandoned'] ?? $auditor::ABANDONED_REPORT);
-            } else {
-                // @phpstan-ignore-next-line
-                $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false, $auditConfig['ignore'] ?? []);
-            }
+        $auditConfig = $composer->getConfig()->get('audit');
+        if (!is_array($auditConfig)) {
+            $auditConfig = [];
+        }
+        if (version_compare($composer::getVersion(), '2.6.3', '>=')) {
+            // @todo Adjust default audit value when Composer 2.7.0 is available.
+            // @phpstan-ignore-next-line
+            $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false, $auditConfig['ignore'] ?? [], $auditConfig['abandoned'] ?? $auditor::ABANDONED_REPORT);
         } else {
-            $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false);
+            // @phpstan-ignore-next-line
+            $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false, $auditConfig['ignore'] ?? []);
         }
 
         return min(255, $audit);
