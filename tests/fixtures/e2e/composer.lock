@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a10965d4453f1dd83e41fb9a6683fa0",
+    "content-hash": "c63c616b569c10a564acc52c28937cdb",
     "packages": [
         {
             "name": "apigee/apigee-client-php",
@@ -7325,12 +7325,12 @@
             "version": "5.2.12",
             "source": {
                 "type": "git",
-                "url": "https://github.com/justinrainbow/json-schema.git",
+                "url": "https://github.com/jsonrainbow/json-schema.git",
                 "reference": "ad87d5a5ca981228e0e205c2bc7dfb8e24559b60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/ad87d5a5ca981228e0e205c2bc7dfb8e24559b60",
+                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/ad87d5a5ca981228e0e205c2bc7dfb8e24559b60",
                 "reference": "ad87d5a5ca981228e0e205c2bc7dfb8e24559b60",
                 "shasum": ""
             },
@@ -7449,77 +7449,20 @@
                 }
             ],
             "time": "2020-07-06T04:49:32+00:00"
-        },
-        {
-            "name": "mxr576/composer-audit-changes",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "../../..",
-                "reference": "f91cccc8e7a5e0d008fe58d67d62d6d24228e6fd"
-            },
-            "require": {
-                "composer-plugin-api": "^2.3",
-                "php": "~8.1.0 || ~8.2.0"
-            },
-            "require-dev": {
-                "composer/composer": "^2.4",
-                "ergebnis/composer-normalize": "^2.30",
-                "ergebnis/license": "^2.1",
-                "friendsofphp/php-cs-fixer": "^3.16",
-                "phpstan/phpstan": "^1.10",
-                "phpstan/phpstan-deprecation-rules": "^1.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                },
-                "class": "\\mxr576\\ComposerAuditChanges\\Composer\\Plugin",
-                "composer-normalize": {
-                    "indent-size": 4,
-                    "indent-style": "space"
-                },
-                "plugin-optional": true
-            },
-            "autoload": {
-                "psr-4": {
-                    "mxr576\\ComposerAuditChanges\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dezső BICZÓ",
-                    "email": "mxr576@gmail.com"
-                }
-            ],
-            "description": "Composer command for only auditing installed or updated packages in composer.lock",
-            "keywords": [
-                "Composer",
-                "QA",
-                "audit",
-                "dependency analyses",
-                "dev"
-            ],
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "drupal/feeds": 10,
-        "drupal/tamper": 15,
-        "mxr576/composer-audit-changes": 20
+        "drupal/tamper": 15
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform": {},
+    "platform-dev": {},
+    "platform-overrides": {
+        "php": "8.1.0"
+    },
+    "plugin-api-version": "2.6.0"
 }

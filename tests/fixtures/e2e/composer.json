@@ -19,8 +19,7 @@
         "drupal/tamper": "1.0-alpha3"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.30",
-        "mxr576/composer-audit-changes": "^1.99@dev"
+        "ergebnis/composer-normalize": "^2.30"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -47,8 +46,10 @@
             "drupal/core-project-message": true,
             "php-http/discovery": true,
             "mxr576/ddqg-audit": true,
-            "ergebnis/composer-normalize": true,
-            "mxr576/composer-audit-changes": true
+            "ergebnis/composer-normalize": true
+        },
+        "platform": {
+            "php": "8.1.0"
         },
         "sort-packages": true
     },
