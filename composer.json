@@ -25,8 +25,8 @@
         "ergebnis/composer-normalize": "^2.30",
         "ergebnis/license": "^2.1",
         "friendsofphp/php-cs-fixer": "^3.16",
-        "phpstan/phpstan": "^1.12.13",
-        "phpstan/phpstan-deprecation-rules": "^1.2.1"
+        "phpstan/phpstan": "^2.1.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0.1"
     },
     "minimum-stability": "stable",
     "autoload": {

@@ -1,76 +1,103 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\\.$#"
+			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
+			identifier: foreach.nonIterable
 			count: 2
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Cannot access offset 'alias' on mixed\\.$#"
+			message: '#^Cannot access offset ''alias'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Cannot access offset 'alias_normalized' on mixed\\.$#"
+			message: '#^Cannot access offset ''alias_normalized'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Cannot access offset 'aliases' on mixed\\.$#"
+			message: '#^Cannot access offset ''aliases'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Cannot access offset 'name' on mixed\\.$#"
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Cannot access offset 'package' on mixed\\.$#"
-			count: 2
-			path: src/Composer/Command/AuditChangesCommand.php
-
-		-
-			message: "#^Cannot access offset 'packages' on mixed\\.$#"
+			message: '#^Cannot access offset ''package'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Cannot access offset 'packages\\-dev' on mixed\\.$#"
+			message: '#^Cannot access offset ''packages'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Cannot access offset 0 on mixed\\.$#"
+			message: '#^Cannot access offset ''packages\-dev'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\$aliasOf of class Composer\\\\Package\\\\CompleteAliasPackage constructor expects Composer\\\\Package\\\\CompletePackage, Composer\\\\Package\\\\CompleteAliasPackage\\|Composer\\\\Package\\\\CompletePackage given\\.$#"
+			message: '#^Cannot access offset 0 on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\$config of method Composer\\\\Package\\\\Loader\\\\ArrayLoader\\:\\:load\\(\\) expects array, mixed given\\.$#"
+			message: '#^Parameter \#1 \$aliasOf of class Composer\\Package\\CompleteAliasPackage constructor expects Composer\\Package\\CompletePackage, Composer\\Package\\CompleteAliasPackage\|Composer\\Package\\CompletePackage given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$arrays of function array_merge expects array, mixed given\\.$#"
+			message: '#^Parameter \#1 \$config of method Composer\\Package\\Loader\\ArrayLoader\:\:load\(\) expects array\<mixed\>, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Parameter \\#2 \\$version of class Composer\\\\Package\\\\CompleteAliasPackage constructor expects string, mixed given\\.$#"
+			message: '#^Parameter \#1 \.\.\.\$arrays of function array_merge expects array, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Parameter \\#2 \\.\\.\\.\\$arrays of function array_merge expects array, mixed given\\.$#"
+			message: '#^Parameter \#2 \$version of class Composer\\Package\\CompleteAliasPackage constructor expects string, mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: "#^Parameter \\#3 \\$prettyVersion of class Composer\\\\Package\\\\CompleteAliasPackage constructor expects string, mixed given\\.$#"
+			message: '#^Parameter \#2 \.\.\.\$arrays of function array_merge expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Composer/Command/AuditChangesCommand.php
+
+		-
+			message: '#^Parameter \#3 \$prettyVersion of class Composer\\Package\\CompleteAliasPackage constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Composer/Command/AuditChangesCommand.php
+
+		-
+			message: '#^Parameter \#6 \$ignoreList of method Composer\\Advisory\\Auditor\:\:audit\(\) expects array\<string\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Composer/Command/AuditChangesCommand.php
+
+		-
+			message: '#^Parameter \#7 \$abandoned of method Composer\\Advisory\\Auditor\:\:audit\(\) expects ''fail''\|''ignore''\|''report'', mixed given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Composer/Command/AuditChangesCommand.php

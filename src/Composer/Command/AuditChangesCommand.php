@@ -221,12 +221,10 @@ EOT
         $process_executor = new ProcessExecutor();
         $exit_code = $process_executor->execute(sprintf('git show %s 2>&1', ProcessExecutor::escape($ref)), $output);
 
+        assert(is_string($output));
+
         if (0 !== $exit_code) {
             throw new \RuntimeException(sprintf('Could not open file %s or find it in git as %s: %s.', $original, $ref, $output));
-        }
-
-        if (null === $output) {
-            throw new \RuntimeException('Output is null, that should not happen.');
         }
 
         // Even if "git show" exited with a non-zero exit code, the produced
