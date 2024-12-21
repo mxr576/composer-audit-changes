@@ -699,15 +699,15 @@
             },
             "require": {
                 "composer-plugin-api": "^2.3",
-                "composer/composer": "^2.6.0",
+                "composer/composer": "^2.7.7",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "require-dev": {
                 "ergebnis/composer-normalize": "^2.30",
                 "ergebnis/license": "^2.1",
                 "friendsofphp/php-cs-fixer": "^3.16",
-                "phpstan/phpstan": "^1.12.13",
-                "phpstan/phpstan-deprecation-rules": "^1.2.1"
+                "phpstan/phpstan": "^2.0.4",
+                "phpstan/phpstan-deprecation-rules": "^2.0.1"
             },
             "type": "composer-plugin",
             "extra": {
@@ -2074,7 +2074,7 @@
         "mxr576/composer-audit-changes": 20
     },
     "prefer-stable": false,
-    "prefer-lowest": true,
+    "prefer-lowest": false,
     "platform": {},
     "platform-dev": {},
     "plugin-api-version": "2.6.0"
