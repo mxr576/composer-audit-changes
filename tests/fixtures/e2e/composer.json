@@ -46,6 +46,9 @@
             "mxr576/ddqg-audit": true,
             "ergebnis/composer-normalize": true
         },
+        "audit": {
+            "block-insecure": false
+        },
         "platform": {
             "php": "8.1.0"
         },
