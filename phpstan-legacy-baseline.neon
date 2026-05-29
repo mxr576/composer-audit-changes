@@ -1,0 +1,13 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Offset ''ignore'' might not exist on array\{\}\|array\{ignore\?\: mixed, abandoned\?\: ''fail''\|''ignore''\|''report''\|null\}\.$#'
+			identifier: offsetAccess.notFound
+			count: 1
+			path: src/Composer/Auditor/LegacyAuditorAdapter.php
+
+		-
+			message: '#^Parameter \#6 \$ignoreList of method Composer\\Advisory\\Auditor\:\:audit\(\) expects array\<string\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Composer/Auditor/LegacyAuditorAdapter.php

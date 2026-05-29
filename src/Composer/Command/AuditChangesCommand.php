@@ -27,6 +27,8 @@ use Composer\Repository\LockArrayRepository;
 use Composer\Repository\RepositorySet;
 use Composer\Semver\Constraint\MatchAllConstraint;
 use Composer\Util\ProcessExecutor;
+use mxr576\ComposerAuditChanges\Composer\Auditor\LegacyAuditorAdapter;
+use mxr576\ComposerAuditChanges\Composer\Auditor\PolicyConfigAuditorAdapter;
 use Seld\JsonLint\ParsingException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -73,18 +75,33 @@ EOT
             return 0;
         }
 
-        $auditor = new Auditor();
         $repoSet = new RepositorySet();
         foreach ($composer->getRepositoryManager()->getRepositories() as $repo) {
             $repoSet->addRepository($repo);
         }
 
-        $auditConfig = $composer->getConfig()->get('audit');
-        if (!is_array($auditConfig)) {
-            $auditConfig = [];
-        }
+        // Composer 2.10.0 changed Auditor::audit() to accept a PolicyConfig
+        // value object instead of individual $ignoreList and $abandonedMode
+        // parameters. Each adapter encapsulates the API available in its
+        // target Composer version so that PHPStan can analyse them in
+        // isolation without cross-version type errors.
+        //
+        // @see https://github.com/composer/composer/commit/37825e9851291b969be52cf98894af17505f2766
+        $adapter = version_compare(Composer::VERSION, '2.10.0', '>=')
+            ? new PolicyConfigAuditorAdapter(
+                $composer->getConfig(),
+                $composer->getRepositoryManager(),
+                $composer->getLoop()->getHttpDownloader(),
+            )
+            : new LegacyAuditorAdapter($composer->getConfig());
 
-        $audit = $auditor->audit($this->getIO(), $repoSet, $packages, $this->getAuditFormat($input, 'format'), false, $auditConfig['ignore'] ?? [], $auditConfig['abandoned'] ?? $auditor::ABANDONED_REPORT);
+        $audit = $adapter->audit(
+            $this->getIO(),
+            $repoSet,
+            $packages,
+            $this->getAuditFormat($input, 'format'),
+            false,
+        );
 
         return min(255, $audit);
     }

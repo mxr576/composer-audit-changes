@@ -6,3 +6,4 @@
 /composer.lock            export-ignore
 /phpstan.neon.dist        export-ignore
 /phpstan-baseline.neon       export-ignore
+/phpstan-by-composer-version.php      export-ignore

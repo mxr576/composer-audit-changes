@@ -91,13 +91,7 @@ parameters:
 			path: src/Composer/Command/AuditChangesCommand.php
 
 		-
-			message: '#^Parameter \#6 \$ignoreList of method Composer\\Advisory\\Auditor\:\:audit\(\) expects array\<string\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Composer/Command/AuditChangesCommand.php
-
-		-
-			message: '#^Parameter \#7 \$abandoned of method Composer\\Advisory\\Auditor\:\:audit\(\) expects ''fail''\|''ignore''\|''report'', mixed given\.$#'
-			identifier: argument.type
-			count: 1
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 2
 			path: src/Composer/Command/AuditChangesCommand.php

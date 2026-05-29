@@ -1,5 +1,6 @@
 includes:
     - phpstan-baseline.neon
+    - phpstan-by-composer-version.php
     - %rootDir%/../../composer/composer/phpstan/rules.neon
     - %rootDir%/../../phpstan/phpstan-deprecation-rules/rules.neon
 
