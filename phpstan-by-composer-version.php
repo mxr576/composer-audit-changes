@@ -36,7 +36,6 @@ if (Semver::satisfies($composerVersion, '<2.10.0')) {
     $config['includes'][] = __DIR__ . '/phpstan-legacy-baseline.neon';
 } else {
     $config['parameters']['excludePaths']['analyseAndScan'][] = __DIR__ . '/src/Composer/Auditor/LegacyAuditorAdapter.php';
-
 }
 
 return $config;

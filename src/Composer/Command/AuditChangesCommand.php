@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2023-2025 Dezső Biczó
+ * Copyright (c) 2023-2026 Dezső Biczó
  *
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
@@ -44,10 +44,10 @@ final class AuditChangesCommand extends BaseCommand
         $this->setName('audit-changes');
         $this->setDescription('Only audits those packages that were installed or updated since a previous version of composer.lock');
         $this->setDefinition([
-          new InputArgument('base', InputArgument::OPTIONAL, 'A file path, URL or GIT reference for retrieving the base (original) composer.lock file.', 'HEAD:composer.lock'),
-          new InputOption('no-dev', null, InputOption::VALUE_NONE, 'Disables auditing of require-dev packages.'),
-          new InputOption('format', 'f', InputOption::VALUE_REQUIRED, 'Output format. Must be "table", "plain", "json", or "summary".', Auditor::FORMAT_TABLE, Auditor::FORMATS),
-          new InputOption('locked', null, InputOption::VALUE_NONE, 'Audit based on the lock file instead of the installed packages.'),
+            new InputArgument('base', InputArgument::OPTIONAL, 'A file path, URL or GIT reference for retrieving the base (original) composer.lock file.', 'HEAD:composer.lock'),
+            new InputOption('no-dev', null, InputOption::VALUE_NONE, 'Disables auditing of require-dev packages.'),
+            new InputOption('format', 'f', InputOption::VALUE_REQUIRED, 'Output format. Must be "table", "plain", "json", or "summary".', Auditor::FORMAT_TABLE, Auditor::FORMATS),
+            new InputOption('locked', null, InputOption::VALUE_NONE, 'Audit based on the lock file instead of the installed packages.'),
         ])
           ->setHelp(
               <<<EOT
@@ -157,7 +157,7 @@ EOT
      * accepts a new JsonFile object as parameter, and it can only be built from a
      * file, not from a string, today.
      *
-     * @see \Composer\Package\Locker::getLockedRepository()
+     * @see Locker::getLockedRepository()
      *
      * @throws \RuntimeException
      */

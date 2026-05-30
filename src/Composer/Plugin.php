@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Copyright (c) 2023-2025 Dezső Biczó
+ * Copyright (c) 2023-2026 Dezső Biczó
  *
  * For the full copyright and license information, please view
  * the LICENSE.md file that was distributed with this source code.
@@ -36,7 +36,7 @@ final class Plugin implements \Composer\Plugin\PluginInterface, \Composer\Plugin
     public function getCapabilities(): array
     {
         return [
-          'Composer\Plugin\Capability\CommandProvider' => 'mxr576\ComposerAuditChanges\Composer\CommandProvider',
+            'Composer\Plugin\Capability\CommandProvider' => 'mxr576\ComposerAuditChanges\Composer\CommandProvider',
         ];
     }
 }
