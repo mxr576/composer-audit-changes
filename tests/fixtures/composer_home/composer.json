@@ -26,6 +26,9 @@
     "config": {
         "allow-plugins": {
             "mxr576/composer-audit-changes": true
+        },
+        "platform": {
+            "php": "8.2.0"
         }
     }
 }
